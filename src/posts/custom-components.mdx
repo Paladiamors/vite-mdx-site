@@ -1,0 +1,32 @@
+---
+title: "Using Custom Components"
+date: "2024-03-05"
+description: "Demonstrating how to use custom React components in MDX."
+---
+
+import Callout from '../components/Callout';
+
+# Custom Components in MDX
+
+This post demonstrates how to use custom components within MDX.
+
+<Callout title="Info Box">
+  This is a custom `Callout` component rendered inside MDX!
+</Callout>
+
+You can also pass props to components:
+
+<Callout type="warning" title="Warning">
+  Be careful when using custom components, make sure they are imported or provided in the MDXProvider context.
+</Callout>
+
+<Callout type="error" title="Error">
+  This is an error message example.
+</Callout>
+
+## Code Blocks
+
+```typescript
+const hello = "world";
+console.log(hello);
+```
