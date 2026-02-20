@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# Vite + React + MDX Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern blog template built with Vite, React, TypeScript, Tailwind CSS, and MDX.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **MDX Support**: Write posts using Markdown with embedded React components.
+*   **Tailwind CSS**: Utility-first styling with `@tailwindcss/typography` for beautiful prose.
+*   **Custom Components**: Easily integrate custom React components into your posts.
+*   **Routing**: Client-side routing with `react-router-dom`.
+*   **Responsive Design**: Fully responsive layout including a contact form.
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+*   Node.js (v18 or higher recommended)
+*   npm (or yarn/pnpm)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1.  Clone the repository.
+2.  Install dependencies:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+    ```bash
+    npm install
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Running Development Server
+
+To start the development server with hot module replacement:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open your browser and navigate to `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Building for Production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+To create a production build:
+
+```bash
+npm run build
 ```
+
+The output will be in the `dist/` directory. You can preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Adding New Posts
+
+1.  Create a new `.mdx` file in the `src/posts/` directory.
+2.  Add the required frontmatter at the top of the file:
+
+    ```markdown
+    ---
+    title: "Your Post Title"
+    date: "YYYY-MM-DD"
+    description: "A brief description of your post."
+    ---
+    ```
+
+3.  Write your content below the frontmatter using Markdown or MDX.
+
+## Using Custom Components
+
+You can import and use custom components directly in your MDX files:
+
+```jsx
+import Callout from '../components/Callout';
+
+<Callout type="info" title="Note">
+  This is a custom component!
+</Callout>
+```
+
+## Project Structure
+
+*   `src/components/`: Reusable UI components (Header, Footer, Layout, MDX components).
+*   `src/pages/`: Page components (Home, Post, Contact).
+*   `src/posts/`: MDX blog post files.
+*   `src/lib/`: Utility functions (e.g., post loading logic).

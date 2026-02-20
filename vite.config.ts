@@ -16,7 +16,8 @@ export default defineConfig({
           remarkFrontmatter,
           remarkMdxFrontmatter,
           remarkGfm
-        ]
+        ],
+        providerImportSource: "@mdx-js/react"
       })
     },
     tailwindcss(),
